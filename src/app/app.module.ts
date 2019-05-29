@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'post/:id', component: PostComponent },
   { path: 'login', component: LogComponent },
   { path: 'home', component: PostsComponent},
-  { path: '',   redirectTo: '/post', pathMatch: 'full' }
+  { path: '',   redirectTo: '/posts', pathMatch: 'full' }
 ];
 
 
