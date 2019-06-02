@@ -5,16 +5,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
-import { LoginPipe } from './login.pipe';
 import { LogComponent } from './log/log.component';
 
-const routes: Routes = [
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+
+import { RoutingModule } from './routing/routing.module';
+import { AuthGuard } from './auth.guard';
+
+import { UsersService } from './users.service';
+import { HttpClientModule } from '@angular/common/http';
+
+/*const routes: Routes = [
   { path: 'posts', component: PostsComponent },
   { path: 'post/:id', component: PostComponent },
   { path: 'login', component: LogComponent },
   { path: 'home', component: PostsComponent},
   { path: '',   redirectTo: '/posts', pathMatch: 'full' }
-];
+];*/
 
 
 @NgModule({
@@ -22,14 +29,17 @@ const routes: Routes = [
     AppComponent,
     PostsComponent,
     PostComponent,
-    LoginPipe,
     LogComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    //RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    RoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
