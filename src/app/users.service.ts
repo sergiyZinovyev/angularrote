@@ -19,6 +19,10 @@ export class UsersService {
     return this.http.get(`${apiUrl}/users`);
   }
 
+  createPost(post) {
+    return this.http.post(`${apiUrl}/users`, post)
+  }
+
 }
 
 

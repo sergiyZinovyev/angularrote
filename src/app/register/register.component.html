@@ -1,0 +1,52 @@
+<div class="container width mt-5">
+  
+  <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="text" name="register_username" class="form-control" placeholder="Username" formControlName="username">
+        </div>
+        <div *ngIf = "warUsername=='vis'" class="alert alert-danger myalert">
+          Username is required!
+        </div>
+    </div>
+  
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="text" name="register_fullname" class="form-control" placeholder="Full name" formControlName="fullname">
+        </div>
+        <div *ngIf = "warFullname=='vis'" class="alert alert-danger myalert">
+            Fullname is required!
+        </div>
+    </div>
+  
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="email" name="register_email" class="form-control" placeholder="Email" formControlName="email">
+        </div>
+        <div *ngIf = "warEmail=='vis'" class="alert alert-danger myalert">
+            Correct email is required!
+        </div>
+    </div>
+  
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="password" name="register_password" class="form-control" placeholder="Password" formControlName="password">
+        </div>
+        <div *ngIf = "warPass=='vis'" class="alert alert-danger myalert">
+            Password must contain at least one letter, at least one number, and be longer than six characters!
+        </div>
+    </div>
+  
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="password" name="register_cpassword" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+        </div>
+        <div *ngIf = "warConfirmPassword=='vis'" class="alert alert-danger myalert">
+            password does not match!
+        </div>
+    </div>
+  
+    <input type="submit" value="Register" class="btn btn-success btn-info btn-block mt-4">
+  </form>
+</div>

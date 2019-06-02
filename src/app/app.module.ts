@@ -14,6 +14,8 @@ import { AuthGuard } from './auth.guard';
 
 import { UsersService } from './users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 
 /*const routes: Routes = [
   { path: 'posts', component: PostsComponent },
@@ -29,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     PostsComponent,
     PostComponent,
-    LogComponent
+    LogComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

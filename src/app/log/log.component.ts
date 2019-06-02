@@ -53,12 +53,13 @@ export class LogComponent implements OnInit {
     if(this.loginForm.valid){
       let login = this.getUser(this.email.value)[0];
       if (!login){
+        this.router.navigate(['/register']);
         return localStorage.setItem('login', 'false');
       }
       if(this.email.value == login.username && this.password.value == login.password){
         localStorage.setItem('login', 'true');
       }
-      this.router.navigate(['/posts']);
+      this.router.navigate(['/home']);
     }
   }
 
