@@ -59,6 +59,8 @@ export class LogComponent implements OnInit {
       if(this.email.value == login.username && this.password.value == login.password){
         localStorage.setItem('login', 'true');
       }
+
+      localStorage.setItem('username', login.fullname);
       this.router.navigate(['/home']);
     }
   }

@@ -21,6 +21,14 @@ export class UsersService {
 
   createPost(post) {
     return this.http.post(`${apiUrl}/users`, post)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(err) {
+    console.log('caught mapping error and rethrowing', err);
+    return throwError(err);
   }
 
 }

@@ -97,8 +97,10 @@ export class RegisterComponent implements OnInit {
         email: this.email.value,
         password: this.password.value
       }
-      this.data.createPost(newRegister);
+
+      this.data.createPost(newRegister).subscribe();
       console.log(newRegister);
+      this.router.navigate(['/login']);
     }
   }
 
