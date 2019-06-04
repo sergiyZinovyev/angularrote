@@ -13,10 +13,22 @@ const apiUrl = 'https://todoserv.herokuapp.com';
 })
 export class UsersService {
 
+  users;
+
   constructor(private http: HttpClient) { }
 
+  ngOnInit(){
+    this.users = this.getUsersFromServer();
+  }
+
+  addUsers(newData){
+    this.users.push(newData);
+  }
+
   getUsersFromServer() {
-    return this.http.get(`${apiUrl}/users`);
+    return this.http.get(`${apiUrl}/users`).subscribe((posts) => {
+      this.users = posts;
+    });
   }
 
   createPost(post) {

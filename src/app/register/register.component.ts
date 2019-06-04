@@ -98,7 +98,9 @@ export class RegisterComponent implements OnInit {
         password: this.password.value
       }
 
-      this.data.createPost(newRegister).subscribe();
+      this.data.createPost(newRegister).subscribe((res) => {
+        this.data.addUsers(res);
+       });
       console.log(newRegister);
       this.router.navigate(['/login']);
     }

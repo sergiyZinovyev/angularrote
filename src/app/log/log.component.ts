@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
@@ -29,9 +29,10 @@ export class LogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data.getUsersFromServer().subscribe( (users) => {
+    this.data.getUsersFromServer();
+    /*this.data.users.subscribe( (users) => {
       this.myUsers = users; 
-    });
+    });*/
   }
 
   onSubmit() {
@@ -76,7 +77,7 @@ export class LogComponent implements OnInit {
   }
 
   getUser(username) {
-    return this.myUsers.filter((item) => item.username == username );
+    return this.data.users.filter((item) => item.username == username );
   }
 
 }
