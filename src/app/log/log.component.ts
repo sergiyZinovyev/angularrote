@@ -63,6 +63,7 @@ export class LogComponent implements OnInit {
         localStorage.setItem('login', 'true');
       }
       this.data.editvalidReg(false);
+      this.data.editvalidLog(false);
       localStorage.setItem('username', login.fullname);
       this.router.navigate(['/home']);
     }
