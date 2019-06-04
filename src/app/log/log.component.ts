@@ -54,6 +54,7 @@ export class LogComponent implements OnInit {
     if(this.loginForm.valid){
       let login = this.getUser(this.email.value)[0];
       if (!login){
+        this.data.editvalidLog(true);
         this.router.navigate(['/register']);
         return localStorage.setItem('login', 'false');
       }

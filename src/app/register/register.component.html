@@ -1,5 +1,9 @@
 <div class="container width mt-5">
-  
+  <div *ngIf = "validLog == true">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>You have entered an invalid login password!</strong> Please register or enter the correct login password.
+      </div>
+  </div>
   <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group ">

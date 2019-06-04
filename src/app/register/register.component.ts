@@ -21,6 +21,8 @@ function passwordConfirming(c: AbstractControl): any {
 })
 export class RegisterComponent implements OnInit {
 
+  validLog: boolean = false;
+
   warUsername: string = 'hidd';
   warFullname: string = 'hidd';
   warEmail: string = 'hidd';
@@ -42,7 +44,9 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.registerForm.controls['password'].valueChanges.subscribe((value) => this.registerForm.controls['confirmPassword'].setValue('')) 
+    this.registerForm.controls['password'].valueChanges.subscribe((value) => this.registerForm.controls['confirmPassword'].setValue(''));
+    this.validLog = this.data.validLog;
+    console.log(this.validLog);
   }
  
   get username() {return this.registerForm.get('username')}
@@ -61,7 +65,7 @@ export class RegisterComponent implements OnInit {
     return null;
   }*/
 
-
+ 
 
   onSubmit() {
     if(this.username.valid){this.warUsername = "hidd"}
@@ -101,6 +105,8 @@ export class RegisterComponent implements OnInit {
       this.data.createPost(newRegister).subscribe((res) => {
         this.data.addUsers(res);
        });
+      
+      this.data.editvalidLog(false)
       console.log(newRegister);
       this.router.navigate(['/login']);
     }

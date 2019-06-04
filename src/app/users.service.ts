@@ -14,6 +14,7 @@ const apiUrl = 'https://todoserv.herokuapp.com';
 export class UsersService {
 
   users;
+  validLog: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -41,6 +42,10 @@ export class UsersService {
   private handleError(err) {
     console.log('caught mapping error and rethrowing', err);
     return throwError(err);
+  }
+
+  editvalidLog(n){
+    this.validLog = n;
   }
 
 }
