@@ -59,13 +59,20 @@ export class LogComponent implements OnInit {
         this.router.navigate(['/register']);
         return localStorage.setItem('login', 'false');
       }
-      if(this.email.value == login.username && this.password.value == login.password){
+      if((this.email.value == login.username || this.email.value == login.email) && this.password.value == login.password){
         localStorage.setItem('login', 'true');
+        this.data.editvalidReg(false);
+        this.data.editvalidLog(false);
+        localStorage.setItem('username', login.fullname);
+        this.router.navigate(['/home']);
       }
-      this.data.editvalidReg(false);
-      this.data.editvalidLog(false);
-      localStorage.setItem('username', login.fullname);
-      this.router.navigate(['/home']);
+      else{
+        this.data.editvalidLog(true);
+        this.data.editvalidReg(false);
+        this.router.navigate(['/register']);
+        return localStorage.setItem('login', 'false');
+      }
+      
     }
   }
 
@@ -80,7 +87,12 @@ export class LogComponent implements OnInit {
   }
 
   getUser(username) {
-    return this.data.users.filter((item) => item.username == username );
+    let obj = this.data.users.filter((item) => item.username == username );
+    if(!obj[0]){
+      obj = this.data.users.filter((item) => item.email == username );
+    }
+    console.log(obj);
+    return obj;
   }
 
 }
