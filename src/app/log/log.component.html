@@ -1,10 +1,15 @@
 
 <div class="container width mt-5">
+    <div *ngIf = "validReg == true">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>You are successfully logged in!</strong> Enter the login and password you just entered when registering.
+        </div>
+    </div>
   <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   
     <div class="form-group mb-4" >
         <div class="input-group">
-            <input type="email" name="login_email" class="form-control" placeholder="Username or email" formControlName="email">
+            <input type="email" name="login_email" class="form-control" placeholder="Username" formControlName="email">
         </div>
         <div [hidden]="warEmail=='hidd'" class="alert alert-danger myalert">
           Username or email is required!

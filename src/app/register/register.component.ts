@@ -105,8 +105,8 @@ export class RegisterComponent implements OnInit {
       this.data.createPost(newRegister).subscribe((res) => {
         this.data.addUsers(res);
        });
-      
-      this.data.editvalidLog(false)
+      this.data.editvalidReg(true);
+      this.data.editvalidLog(false);
       console.log(newRegister);
       this.router.navigate(['/login']);
     }

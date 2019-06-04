@@ -12,6 +12,8 @@ import { UsersService } from '../users.service';
 })
 export class LogComponent implements OnInit {
 
+  validReg: boolean = false;
+
   myUsers: any;
   warEmail: string = 'hidd';
   warPass: string = 'hidd';
@@ -30,9 +32,7 @@ export class LogComponent implements OnInit {
 
   ngOnInit() {
     this.data.getUsersFromServer();
-    /*this.data.users.subscribe( (users) => {
-      this.myUsers = users; 
-    });*/
+    this.validReg = this.data.validReg;
   }
 
   onSubmit() {
@@ -55,13 +55,14 @@ export class LogComponent implements OnInit {
       let login = this.getUser(this.email.value)[0];
       if (!login){
         this.data.editvalidLog(true);
+        this.data.editvalidReg(false);
         this.router.navigate(['/register']);
         return localStorage.setItem('login', 'false');
       }
       if(this.email.value == login.username && this.password.value == login.password){
         localStorage.setItem('login', 'true');
       }
-
+      this.data.editvalidReg(false);
       localStorage.setItem('username', login.fullname);
       this.router.navigate(['/home']);
     }

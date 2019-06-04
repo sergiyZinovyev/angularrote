@@ -15,6 +15,7 @@ export class UsersService {
 
   users;
   validLog: boolean = false;
+  validReg: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -46,6 +47,10 @@ export class UsersService {
 
   editvalidLog(n){
     this.validLog = n;
+  }
+
+  editvalidReg(n){
+    this.validReg = n;
   }
 
 }
